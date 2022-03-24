@@ -1,0 +1,14 @@
+{
+    type:"productAddedToCart",
+    payload : {
+        id:1,
+        quantity:4,
+        totalPrice:6666
+    }
+},
+{
+    type:"productRemovedFromCart",
+    payload : {
+        id:1
+    }
+}

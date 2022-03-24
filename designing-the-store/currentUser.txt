@@ -1,0 +1,29 @@
+[
+    {
+        id:1,
+        currentToken:343ssad2qwe2sde,
+        name:john,
+        address:jalan john kota john,
+        phone: 666666,
+        email:john@test.com,
+        cartId:1
+    },
+    {
+        id:2,
+        currentToken:343ssad2qwe2sde,
+        name:john2,
+        address:jalan john2 kota john2,
+        phone: 666666,
+        email:john2@test.com,
+        cartId:2
+    },
+    {
+        id:3,
+        currentToken:343ssad2qwe2sde,
+        name:john3,
+        address:jalan john3 kota john3,
+        phone: 666666,
+        email:john3@test.com,
+        cartId:3
+    }
+]

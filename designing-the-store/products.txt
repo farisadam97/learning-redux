@@ -1,0 +1,20 @@
+[
+    {
+        id:1,
+        name:jeruk,
+        price:100,
+        isDiscount:false
+    },
+    {
+        id:2,
+        name:jeruk2,
+        price:200,
+        isDiscount:false
+    },
+    {
+        id:3,
+        name:jeruk3,
+        price:300,
+        isDiscount:false
+    }
+]

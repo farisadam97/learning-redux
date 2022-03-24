@@ -1,0 +1,19 @@
+{
+    type:"productAdded",
+    payload:{
+        name:"lalala",
+        price:253,
+    }
+},
+{
+    type:"productRemove",
+    payload:{
+        id:"1"
+    }
+},
+{
+    type:"productAdded",
+    payload:{
+        
+    }
+}
