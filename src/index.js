@@ -6,38 +6,47 @@ store.subscribe(()=>{
     console.log("Store changed!",store.getState())
 })
 
-store.dispatch(productAdded({
-    name:"lala",
-    price:12
-}))
+store.dispatch({
+    type: 'apiRequest', //3.1 Create Action Creators
+    payload: {
+        url: '/posts',
+        method: 'get'
+    }
+});
 
-store.dispatch(productRemoved({
-    id:1
-}))
 
-store.dispatch(productAdded({
-    name:"lala2",
-    price:123
-}))
+// store.dispatch(productAdded({
+//     name:"lala",
+//     price:12
+// }))
 
-store.dispatch(editDiscountOnId({
-    id:2,
-    isDiscount:true
-}))
+// store.dispatch(productRemoved({
+//     id:1
+// }))
 
-store.dispatch(cartAdded({
-    productId:2,
-    quantity:2
-}))
+// store.dispatch(productAdded({
+//     name:"lala2",
+//     price:123
+// }))
 
-store.dispatch(cartAdded({
-    productId:3,
-    quantity:43
-}))
+// store.dispatch(editDiscountOnId({
+//     id:2,
+//     isDiscount:true
+// }))
 
-store.dispatch(cartRemoved({
-    id:1
-}))
+// store.dispatch(cartAdded({
+//     productId:2,
+//     quantity:2
+// }))
+
+// store.dispatch(cartAdded({
+//     productId:3,
+//     quantity:43
+// }))
+
+// store.dispatch(cartRemoved({
+//     id:1
+// }))
 
 
 // console.log(store.getState())

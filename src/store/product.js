@@ -6,7 +6,9 @@ import { createAction,createReducer,createSlice } from "@reduxjs/toolkit"
  * @returns 
  */
 
-const initialState = []
+const initialState = {
+    list:[]
+}
 let lastId = 0
 
 const slice = createSlice({
@@ -14,8 +16,11 @@ const slice = createSlice({
     initialState:initialState,
 
     reducers:{
+        ApiRequestSuccess:(products,action)=>{
+            products.list = action.payload
+        } ,
         productAdded : (products,action) =>{
-            products.push({
+            products.list.push({
                 id:++lastId,
                 name:action.payload.name,
                 price:action.payload.price,
@@ -23,18 +28,18 @@ const slice = createSlice({
             })
         },
         editDiscountOnId : (products,action) => {
-            const index = products.findIndex(product => product.id === action.payload.id)
+            const index = products.list.findIndex(product => product.id === action.payload.id)
             if(index>-1){
                 products[index].isDiscount = action.payload.isDiscount
             }
         },
         productRemoved : (products,action) => {
-            const index = products.findIndex(product => product.id === action.payload.id)
+            const index = products.list.findIndex(product => product.id === action.payload.id)
             products.splice(index,1)
         }
     }
 })
 
-export const {productAdded,editDiscountOnId,productRemoved} = slice.actions
+export const {productAdded,editDiscountOnId,productRemoved,ApiRequestSuccess} = slice.actions
 
 export default slice.reducer 
