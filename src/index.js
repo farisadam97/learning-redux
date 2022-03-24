@@ -1,5 +1,5 @@
 import store from "./store/store";
-import {editDiscountOnId, productAdded, productRemoved} from "./store/product"
+import {editDiscountOnId, productAdded,productRemoved} from "./store/product"
 
 store.subscribe(()=>{
     console.log("Store changed!",store.getState())

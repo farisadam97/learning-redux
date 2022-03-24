@@ -1,67 +1,40 @@
-export const ADD_PRODUCT = "productAdded"
-export const REMOVE_PRODUCT = "productRemoved"
-export const EDIT_DISCOUNT = "changeDiscount"
+import { createAction,createReducer,createSlice } from "@reduxjs/toolkit"
 
 /**
  * 
  * @param {name, price, isDiscount} product 
  * @returns 
  */
-export function productAdded(product = {}){
-    return {
-        type: ADD_PRODUCT,
-        payload: {
-            name: product.name ? product.name : null,
-            price: product.price ? product.price : null,
-            isDiscount: product.isDiscount ? true : false
-        }
-    }
-}
-
-export function productRemoved(product = {}){
-    return {
-        type: REMOVE_PRODUCT,
-        payload: {
-            id: product.id
-        }
-    }
-}
-
-export function editDiscountOnId(product={}){
-    return{
-        type: EDIT_DISCOUNT,
-        payload : {
-            id: product.id,
-            isDiscount : product.isDiscount
-        }
-    }
-}
 
 const initialState = []
 let lastId = 0
-export default function reducer (state = initialState,action){
-    switch (action.type) {
-        case ADD_PRODUCT:
-            
-            return [
-                ...state,
-                {
-                    id:++lastId,
-                    name:action.payload.name,
-                    price:action.payload.price,
-                    isDiscount:false
-                }
-            ]
-            break;
-        
-        case REMOVE_PRODUCT:
-            return state.filter(product => product.id != action.payload.id)
-            break
 
-        case EDIT_DISCOUNT:
-            return state.map(product => product.id === action.payload.id ? {...product, isDiscount : action.payload.isDiscount} : product )
-            break
-        default:
-            return state;
+const slice = createSlice({
+    name:"products",
+    initialState:initialState,
+
+    reducers:{
+        productAdded : (products,action) =>{
+            products.push({
+                id:++lastId,
+                name:action.payload.name,
+                price:action.payload.price,
+                isDiscount:false
+            })
+        },
+        editDiscountOnId : (products,action) => {
+            const index = products.findIndex(product => product.id === action.payload.id)
+            if(index>-1){
+                products[index].isDiscount = action.payload.isDiscount
+            }
+        },
+        productRemoved : (products,action) => {
+            const index = products.findIndex(product => product.id === action.payload.id)
+            products.splice(index,1)
+        }
     }
-}
+})
+
+export const {productAdded,editDiscountOnId,productRemoved} = slice.actions
+
+export default slice.reducer
